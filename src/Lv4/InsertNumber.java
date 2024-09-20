@@ -17,12 +17,17 @@ public class InsertNumber {
             //0은 예외처리, 숫자 외 입력시 예외처리
             for (int i = 0; i < insert.length; i++) {
                 if (insert[i].equals("0")) {
-                    System.out.println("0은 입력할수 업습니다.");
+                    System.out.println("0은 입력할수 없습니다.");
                     throw new Exception();
                 }
                 //try에서 형변환 하면서 발생하는 오류는 catch로
                 num[i] = Integer.parseInt(insert[i]);
             }
+//            //3개의 숫자만 받도록..예외처리
+//            if (insert.length != 3) {
+//                System.out.println("3개의 숫자만 입력하세요");
+//                throw new Exception();
+//            }
 
             //동일한숫자 불가능
             for (int i = 0; i < num.length; i++) {
@@ -38,16 +43,16 @@ public class InsertNumber {
             //형변환 과정에서 발생하는 오류는 이쪽으로
         } catch (NumberFormatException e) {
             System.out.println("올바른 입력값이 아닙니다.");
+            System.out.println(e.getMessage());
             return getnumber(n);
         } catch (Exception e) {
             return getnumber(n);
         }
     }
-
-
+    //자리수 입력 받는 로직이지만 Try catch로 예외처리
     public int zeronum() {
         try {
-            int num = sc.nextInt();
+            int num = Integer.parseInt(sc.nextLine());
             if (num != 3 && num != 4 && num != 5) {
                 throw new Exception();
             }
